@@ -9,7 +9,7 @@ filename = "raw_weather_data.json"
 output_plot_file = "hot_cold_months_plot.png"
 
 # Define hot and cold months
-# 1=Jan, 2=Feb, ... 12=Dec
+# 1=Jan, 2=Feb, ..., 12=Dec
 HOT_MONTHS = [4, 5, 6, 7, 8, 9]  # April - Sep
 COLD_MONTHS = [10, 11, 12, 1, 2, 3] # Oct - Mar
 # ---------------------
@@ -48,7 +48,7 @@ print("DataFrame created successfully.")
 # Resample Data
 print("Filtering and resampling data for hot/cold months...")
 
-# Create two new DataFrames, one for hot, one for cold
+# Create two new DataFrames, one hot, one cold
 hot_df = indexed_df[indexed_df.index.month.isin(HOT_MONTHS)]
 cold_df = indexed_df[indexed_df.index.month.isin(COLD_MONTHS)]
 

@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{Weather API Returns}
+\author{Eric Leachman}
+\date{November 2025}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+I have lived in Spokane for over twenty years. In that time I have had the opportunity to see the weather in Spokane change. Once where I felt like Spokane's winters were snow-filled and ice-cold, I now feel that they are rainy and not-as-cold. Where Spokane's summers were warm but not blistering, I now feel that they are far hotter. 
+
+This was something I always felt, but could never definitively prove. With access to a historic weather API, we can analyze that data to see for sure what the weather is doing.
+
+\section*{Findings}
+\subsection*{Methodology}
+The API call for this was relatively large and I wanted to avoid pinging them too frequently, so I first made a script that downloads the historic weather from the API and saves it as a JSON. This particular script snags temperature, snowfall, and snow depth data for the date range 1990-01-01 through 2025-10-31.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{plot_local_json.png}
+    \caption{Mean temperature/snowfall \& total snowdepth}
+    \label{fig:local}
+\end{figure}
+
+\subsection*{Parsing the Data}
+The data is organized into applicable data frames and is resampled into temperature mean and snow depth means \& standard deviations, as well as a daily snowfall sum. This can be seen in figure \ref{fig:local}. This graph is not particularly intuitive due to the amount of data points and the long period of time. The trend line moves but looks relatively flat. I decided to revisit the data, this time as hot and cold months.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{hot_cold_months_plot.png}
+    \caption{Data organized by hot and cold months.}
+    \label{fig:hotcold}
+\end{figure}
+
+Hot months are designated as April through September. Cold months are October through March. To minimize the number of data points, we average the data points for each month. We split the temperature for hot and cold months into separate graph and we only account for snowfall and snow depth during the cold months to better visualize what is happening which we can see in figure \ref{fig:hotcold}.
+
+\section*{Conclusion}
+By observing the hot/cold month graph, we can see that the trend for temperature is indeed upwards. Since 1990 the average temperature has risen in both hot and cold months. It does follow that snow depth and snow fall has dropped over the years. This is less obviously witnessed in the snowfall trend line, though there is a small drop. 
+
+\end{document}

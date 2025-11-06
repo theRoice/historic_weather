@@ -6,7 +6,6 @@ def main():
     import sys
 
     # API endpoint and parameters
-    # OG end date is 2025-10-31 for full time frame
     url = "https://archive-api.open-meteo.com/v1/archive"
     params = {
         "latitude": 47,
@@ -36,7 +35,6 @@ def main():
         data = response.json()
         
         # Open the file and write the JSON data
-        # 'indent=4' makes the JSON file human-readable
         with open(output_filename, 'w') as file:
             json.dump(data, file, indent=4)
         
